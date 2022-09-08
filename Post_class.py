@@ -1,6 +1,6 @@
-import json
 
-FILE = './data/posts.json'
+import json
+from config import FILE
 
 
 class Posts:

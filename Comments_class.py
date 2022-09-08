@@ -1,6 +1,6 @@
 import json
+from config import COMMENTS_FILE
 
-COMMENTS_FILE = './data/comments.json'
 
 
 class Comments:
