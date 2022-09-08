@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <meta charset="UTF-8">
+    <title>Найденные посты по id</title>
+</head>
+<body>
+{% for i in posts %}
+    <div>
+    <span class="poster_avatar"> <a href="/user/{{ i['poster_name' ] }}">
+        <span> <img src="{{ i['poster_avatar'] }}" width="70" class="img_avatar"> </span> </a> </span>
+        <span class="poster_name"><a href="/user/{{ i['poster_name' ] }}"> {{ i['poster_name' ] }} </a></span>
+    </div>
+    <img src="{{ i['pic'] }}" width="400">
+    <div class="content_full"> {{ i['content'] }} <hr></div><br>
+{% endfor %}
+
+{% for i in id_comment %}
+    <div class="commenter_name"> {{ i["commenter_name"] }}: <span class="comment"> {{ i["comment"] }}</span></div>
+
+
+{% endfor %}
+<div class="count_comments"> {{ count_comments }} Комментариев</div>
+</body>
+</html>

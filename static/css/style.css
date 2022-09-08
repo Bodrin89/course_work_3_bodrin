@@ -1,0 +1,49 @@
+
+body{
+    font-family: "Times New Roman";
+    margin-right: 30%;
+    margin-left: 30%;
+    text-align: left;
+    padding: 10px 10px 20px 10px;
+}
+.content  {
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 5px;
+    text-overflow: ellipsis;
+
+}
+
+a {
+    text-decoration: none;
+    color: brown;
+}
+
+.commenter_name{
+    font-weight: bold;
+}
+.comment{
+    font-weight: 400;
+}
+
+.count_comments{
+    margin: 10px 0px 0px 0px;
+}
+
+.img_avatar{
+    margin-right: 10px;
+    border-radius: 50%;
+
+}
+
+.content_full{
+    margin: 0 0px;
+}
+.sky_logo{
+    font-size: 25px;
+    font-family: "American Typewriter";
+    font-weight: bold;
+    padding: 0px 0px 20px 0px;
+
+}

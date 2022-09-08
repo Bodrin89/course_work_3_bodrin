@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="sky_logo"> SKYPROGRAM </div>
+</header>
+
+<div class="button">
+    <form action="/">
+        <input type="submit" value="Главная страница">
+    </form>
+</div>
+<div class="button"><a href="/search"> <img src="static/img/search.PNG" width="70"> </a>
+</div>
+{% for i in posts %}
+    <div><span class="poster_avatar"> <a href="/user/{{ i['poster_name' ] }}">
+        <span> <img src="{{ i['poster_avatar'] }}" width="70" class="img_avatar"> </span> </a> </span>
+    <span class="poster_name"><a href="/user/{{ i['poster_name' ] }}"> {{ i['poster_name' ] }} </a></span></div>
+    <img src="{{ i['pic'] }}" width="400">
+    <div class="content"> {{ i['content'] }} <hr></div>
+    <p>
+    <div class="pk_link"><a href="/found/id/{{ i['pk'] }}"> Подробнее </a></div></p></br>
+
+
+{% endfor %}
+
+</body>
+</html>
