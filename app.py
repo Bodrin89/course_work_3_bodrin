@@ -1,8 +1,8 @@
 
 import logging
 from flask import Flask, request, render_template, jsonify
-from Post_DAO import *
-from CommentsDAO import *
+from Post_class import *
+from Comments_class import *
 
 
 
