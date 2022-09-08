@@ -12,10 +12,10 @@ from Comments_class import *
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
-load_post_from_json = PostDAO.load_post_from_json(FILE)
-get_posts_by_user = PostDAO()
-get_posts = PostDAO()
-get_post_by_id = PostDAO()
+load_post_from_json = Posts.load_post_from_json(FILE)
+get_posts_by_user = Posts()
+get_posts = Posts()
+get_post_by_id = Posts()
 
 get_comments_all = Comments.load_comments(COMMENTS_FILE)
 get_comments_id = Comments()

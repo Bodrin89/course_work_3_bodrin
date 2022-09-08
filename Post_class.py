@@ -3,7 +3,7 @@ import json
 FILE = './data/posts.json'
 
 
-class PostDAO:
+class Posts:
 
     def load_post_from_json(self):
         '''Открытие JSON файла'''
