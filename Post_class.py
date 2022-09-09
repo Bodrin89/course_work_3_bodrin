@@ -18,11 +18,8 @@ class Posts:
         for i in all_users:
             if i['poster_name'] == user_name:
                 all_post_user.append(i)
-        try:
-            if not len(all_post_user):
-                raise ValueError('Пользователя нет')
-        except ValueError as e:
-            return str(e)
+        if not len(all_post_user):
+            return 'Пользователя нет'
         return all_post_user
 
 

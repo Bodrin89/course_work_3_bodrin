@@ -5,10 +5,6 @@ from Post_class import *
 from Comments_class import *
 
 
-
-
-# logging.basicConfig(filename="./logs/basic.log", level=logging.INFO)
-
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
@@ -17,7 +13,6 @@ get_posts_by_user = Posts()
 get_posts = Posts()
 get_post_by_id = Posts()
 
-get_comments_all = Comments.load_comments(COMMENTS_FILE)
 get_comments_id = Comments()
 
 # Домашняя страница
@@ -57,8 +52,8 @@ def get_found_posts():
 @app.route('/found/id/<int:id_post>')
 def get_found_posts_id(id_post):
     posts = get_post_by_id.get_post_by_pk(load_post_from_json, id_post)
-    id_comment = get_comments_id.load_comment(get_comments_all, id_post)
-    count_comments = len(get_comments_id.load_comment(get_comments_all, id_post))
+    id_comment = get_comments_id.load_comment(id_post)
+    count_comments = len(get_comments_id.load_comment(id_post))
     found_post_id = render_template('found_post_id.html', posts=posts, id_comment=id_comment,
                                     count_comments=count_comments)
     return found_post_id

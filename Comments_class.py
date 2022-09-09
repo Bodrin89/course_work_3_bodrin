@@ -11,11 +11,12 @@ class Comments:
             data_comments = json.load(file)
             return data_comments
 
-    def load_comment(self, all_comment, pk):
-        '''Получение комментария по id'''
 
+    @classmethod
+    def load_comment(cls, pk):
+        '''Получение комментария по id'''
         comments_id = []
-        for i in all_comment:
+        for i in cls.load_comments(cls):
             if pk == i['post_id']:
                 comments_id.append(i)
         return comments_id
