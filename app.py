@@ -1,8 +1,8 @@
 
 import logging
 from flask import Flask, request, render_template, jsonify
-from Post_class import *
-from Comments_class import *
+from post_class import *
+from comments_class import *
 
 
 app = Flask(__name__)
@@ -26,7 +26,7 @@ def home_page():
 @app.route('/user/<name_user>')
 def user(name_user):
     title = f'Посты пользователя {name_user}'
-    posts = get_posts_by_user.get_posts_by_user(load_post_from_json, name_user)
+    posts = get_posts_by_user.get_posts_by_user(name_user)
     if type(posts) == str:
         return posts
     user_post = render_template('home_page.html', posts=posts, title=title)
@@ -43,7 +43,7 @@ def search_page():
 @app.route('/found/posts')
 def get_found_posts():
     text = request.args.get("search_text")
-    posts = get_posts.search_for_posts(load_post_from_json, text)
+    posts = get_posts.search_for_posts(text)
     found_post = render_template('home_page.html', posts=posts)
     return found_post
 
@@ -51,7 +51,7 @@ def get_found_posts():
 # Переход по кнопке "Подробнее" к полному посту и коментариям
 @app.route('/found/id/<int:id_post>')
 def get_found_posts_id(id_post):
-    posts = get_post_by_id.get_post_by_pk(load_post_from_json, id_post)
+    posts = get_post_by_id.get_post_by_pk(id_post)
     id_comment = get_comments_id.load_comment(id_post)
     count_comments = len(get_comments_id.load_comment(id_post))
     found_post_id = render_template('found_post_id.html', posts=posts, id_comment=id_comment,
