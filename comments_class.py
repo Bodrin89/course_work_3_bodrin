@@ -11,7 +11,6 @@ class Comments:
             data_comments = json.load(file)
             return data_comments
 
-
     @classmethod
     def load_comment(cls, pk):
         '''Получение комментария по id'''

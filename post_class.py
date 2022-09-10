@@ -11,7 +11,6 @@ class Posts:
             data = json.load(file)
         return data
 
-
     def get_posts_by_user(self, user_name):
         '''Получение постов юзера по имени'''
         all_post_user = []
@@ -22,7 +21,6 @@ class Posts:
             return 'Пользователя нет'
         return all_post_user
 
-
     def search_for_posts(self, query):
         '''Поиск постов по слову'''
         search_posts = []
@@ -30,7 +28,6 @@ class Posts:
             if query in i["content"]:
                 search_posts.append(i)
         return search_posts
-
 
     def get_post_by_pk(self,id):
         '''Получение поста по id'''

@@ -1,9 +1,9 @@
 
-import logging
+
 from flask import Flask, request, render_template, jsonify
 from post_class import *
 from comments_class import *
-
+from config import *
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -61,23 +61,13 @@ def get_found_posts_id(id_post):
 @app.route('/api/post')
 def load_json():
     data = load_post_from_json
-    logger_one = logging.getLogger("one")
-    file_handler_one = logging.FileHandler("./logs/basic.log")
-    formatter_one = logging.Formatter("%(asctime)s : %(message)s")
-    file_handler_one.setFormatter(formatter_one)
-    logger_one.addHandler(file_handler_one)
-    logger_one.critical(f"Запрос /api/posts")
+    logger_api.info(f"Запрос /api/posts")
     return jsonify(data)
 
 @app.route('/api/post/<int:post_id>')
 def get_json_post_id(post_id):
-    data = get_post_by_id.get_post_by_pk(load_post_from_json, post_id)
-    logger_one = logging.getLogger("one")
-    file_handler_one = logging.FileHandler("./logs/basic.log")
-    formatter_one = logging.Formatter("%(asctime)s : %(message)s")
-    file_handler_one.setFormatter(formatter_one)
-    logger_one.addHandler(file_handler_one)
-    logger_one.critical(f"Запрос /api/posts {post_id}")
+    data = get_post_by_id.get_post_by_pk(post_id)
+    logger_api.info(f"Запрос /api/posts/ {post_id}")
     return jsonify(data)
 
 if __name__ == '__main__':
