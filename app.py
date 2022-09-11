@@ -3,7 +3,7 @@
 from flask import Flask, request, render_template, jsonify
 from post_class import Posts
 from comments_class import Comments
-from config import logger_api, FILE
+from config import logger_api
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -12,7 +12,7 @@ app.config['JSON_AS_ASCII'] = False
 # Домашняя страница
 @app.route('/')
 def home_page():
-    load_post_from_json = Posts.load_post_from_json(FILE)
+    load_post_from_json = Posts.load_post_from_json()
     title = 'Главная страница'
     home_page = render_template('home_page.html', posts=load_post_from_json, title=title)
     return home_page
@@ -55,7 +55,7 @@ def get_found_posts_id(id_post):
 
 @app.route('/api/post')
 def load_json():
-    data = Posts.load_post_from_json(FILE)
+    data = Posts.load_post_from_json()
     logger_api.info(f"Запрос /api/posts")
     return jsonify(data)
 
