@@ -11,28 +11,31 @@ class Posts:
             data = json.load(file)
         return data
 
-    def get_posts_by_user(self, user_name):
+    @classmethod
+    def get_posts_by_user(cls, user_name):
         '''Получение постов юзера по имени'''
         all_post_user = []
-        for i in self.load_post_from_json():
+        for i in cls.load_post_from_json(cls):
             if i['poster_name'] == user_name:
                 all_post_user.append(i)
         if not len(all_post_user):
             return 'Пользователя нет'
         return all_post_user
 
-    def search_for_posts(self, query):
+    @classmethod
+    def search_for_posts(cls, query):
         '''Поиск постов по слову'''
         search_posts = []
-        for i in self.load_post_from_json():
+        for i in cls.load_post_from_json(cls):
             if query in i["content"]:
                 search_posts.append(i)
         return search_posts
 
-    def get_post_by_pk(self,id):
+    @classmethod
+    def get_post_by_pk(cls,id):
         '''Получение поста по id'''
         search_posts_id = []
-        for i in self.load_post_from_json():
+        for i in cls.load_post_from_json(cls):
             if id == i["pk"]:
                 search_posts_id.append(i)
         return search_posts_id
